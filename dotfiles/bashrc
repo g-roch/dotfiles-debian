@@ -93,3 +93,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+. /usr/share/powerline/bindings/bash/powerline.sh

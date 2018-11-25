@@ -121,3 +121,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 call vundle#end()
 filetype plugin indent on
+
+" Load powerline
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set laststatus=2 " Always show statusline
+" set t_Co=256
