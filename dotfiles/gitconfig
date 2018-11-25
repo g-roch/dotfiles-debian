@@ -1,2 +1,4 @@
 [core]
 	excludesfile = ~/.gitignore_global
+[format]
+	pretty = %C(auto)%G? %GS %h %Cgreen%ad%Cblue %aN <%aE>%C(auto)%d %s
