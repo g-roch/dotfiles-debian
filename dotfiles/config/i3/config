@@ -24,7 +24,7 @@ font pango:DejaVu Sans Mono 8
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+# font, it doesn’t scale on retina/hidNORMALpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -69,8 +69,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -85,29 +85,6 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -140,6 +117,78 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+mode "workspace" {
+   # switch to workspace
+   bindsym 1 workspace 1, mode "default"
+   bindsym Shift+1 move container to workspace 1, mode "default"
+
+   bindsym 2 workspace 2, mode "default"
+   bindsym Shift+2 move container to workspace 2, mode "default"
+
+   bindsym 3 workspace 3, mode "default"
+   bindsym Shift+3 move container to workspace 3, mode "default"
+
+   bindsym 4 workspace 4, mode "default"
+   bindsym Shift+4 move container to workspace 4, mode "default"
+
+   bindsym 5 workspace 5, mode "default"
+   bindsym Shift+5 move container to workspace 5, mode "default"
+
+   bindsym 6 workspace 6, mode "default"
+   bindsym Shift+6 move container to workspace 6, mode "default"
+
+   bindsym 7 workspace 7, mode "default"
+   bindsym Shift+7 move container to workspace 7, mode "default"
+
+   bindsym 8 workspace 8, mode "default"
+   bindsym Shift+8 move container to workspace 8, mode "default"
+
+   bindsym 9 workspace 9, mode "default"
+   bindsym Shift+9 move container to workspace 9, mode "default"
+
+   bindsym 0 workspace 10, mode "default"
+   bindsym Shift+0 move container to workspace 10, mode "default"
+
+   bindsym m workspace "musique", mode "default"
+   bindsym Shift+m move container to workspace "musique", mode "default"
+
+   bindsym p workspace "projecteur", mode "default"
+   bindsym Shift+p move container to workspace "projecteur", mode "default"
+
+   # back to normal: Enter or Escape
+   bindsym $mod+w mode "default"
+   bindsym w mode "default"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
+bindsym $mod+w mode "workspace"
+
+set $sys sys lock (l); quit i3 (q); poweroff (o); reboot (r)
+mode "$sys" {
+   bindsym l exec "i3lock", mode "default"
+   bindsym q exec "i3-msg exit", mode "default"
+   bindsym o exec "i3-nagbar -t warning -m 'poweroff' -b 'Yes, poweroff' 'systemctl poweroff'", mode "default"
+   bindsym r exec "i3-nagbar -t warning -m 'reboot' -b 'Yes, reboot' 'systemctl reboot'", mode "default"
+
+   # back to normal: Enter or Escape
+   bindsym s mode "default"
+   bindsym $mod+s mode "default"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
+bindsym $mod+s mode "$sys"
+
+set $proj projection mode : 
+mode "$proj" {
+   # back to normal: Enter or Escape
+   bindsym p mode "default"
+   bindsym $mod+p mode "default"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
+bindsym $mod+p mode "$proj"
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
