@@ -1,0 +1,30 @@
+#!/usr/bin/php
+<?php
+
+$source = $argv[1];
+$destination = $argv[2];
+
+install($source, $destination);
+
+function install($src, $dst)
+{
+   if(is_dir($src))
+   {
+      if(!is_dir($dst))
+      {
+         mkdir($dst);
+      }
+      foreach(scandir($src) as $subfile) if($subfile[0] !== '.')
+      {
+         install("$src/$subfile", "$dst/$subfile");
+      }
+   }
+   elseif(is_file($src))
+   {
+      if(!is_link($dst))
+      {
+         passthru("ln -rs \"$src\" \"$dst\"");
+      }
+   }
+
+}
