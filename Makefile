@@ -4,7 +4,7 @@ DOTFILES=$(patsubst dotfiles/%,%,$(wildcard dotfiles/*))
 install-dotfiles: $(patsubst %,$(HOME)/.%,$(DOTFILES)) $(HOME)/.vim
 install-software-apt: 
 	sudo apt update && sudo apt install pass git make tig vim vim-gtk3 meld\
-	  	cryptsetup lvm2 git dirmngr powerline php-cli python-pip
+	  	cryptsetup lvm2 git dirmngr powerline php-cli python-pip numlockx
 	pip install powerline-gitstatus
 
 $(HOME)/.%: $(PWD)/dotfiles/%
