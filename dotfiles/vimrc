@@ -118,9 +118,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'jamessan/vim-gnupg' " Open transparently encrypted file
 
 call vundle#end()
 filetype plugin indent on
+
+" config jamessan/vim-gnupg
+let g:GPGPreferArmor=1 " Armor files
+let g:GPGPreferSign=1  " Sign new file
+
 
 " Load powerline
 python3 from powerline.vim import setup as powerline_setup
@@ -128,3 +134,7 @@ python3 powerline_setup()
 python3 del powerline_setup
 set laststatus=2 " Always show statusline
 " set t_Co=256
+
+if filereadable(expand("~/.vim_environment"))
+    source ~/.vim_environment
+endif
