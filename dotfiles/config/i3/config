@@ -164,12 +164,17 @@ mode "workspace" {
 }
 bindsym $mod+w mode "workspace"
 
-set $sys sys lock (l); quit i3 (q); poweroff (o); reboot (r)
+set $Locker i3lock
+set $sys sys lock (l); quit i3 (q); poweroff (o); reboot (r); suspend (s); hibernate (h)
 mode "$sys" {
-   bindsym l exec "i3lock", mode "default"
-   bindsym q exec "i3-msg exit", mode "default"
-   bindsym o exec "i3-nagbar -t warning -m 'poweroff' -b 'Yes, poweroff' 'systemctl poweroff'", mode "default"
-   bindsym r exec "i3-nagbar -t warning -m 'reboot' -b 'Yes, reboot' 'systemctl reboot'", mode "default"
+   bindsym l       exec --no-startup-id $Locker, mode "default"
+   bindsym q       exec --no-startup-id "i3-msg exit", mode "default"
+   bindsym o       exec --no-startup-id "i3-nagbar -t warning -m 'poweroff' -b 'Yes, poweroff' 'systemctl poweroff'", mode "default"
+   bindsym Shift+o exec --no-startup-id systemctl poweroff, mode "default"
+   bindsym r       exec --no-startup-id "i3-nagbar -t warning -m 'reboot' -b 'Yes, reboot' 'systemctl reboot'", mode "default"
+   bindsym Shift+r exec --no-startup-id systemctl reboot, mode "default"
+   bindsym s       exec --no-startup-id $Locker && systemctl suspend, mode "default"
+   bindsym h       exec --no-startup-id $Locker && systemctl hibernate, mode "default"
 
    # back to normal: Enter or Escape
    bindsym s mode "default"
