@@ -1,0 +1,76 @@
+{
+    "segments": {
+        "left": [
+            {
+                "function": "powerline.segments.shell.mode"
+            },
+            {
+                "function": "powerline.segments.common.players.rhythmbox",
+                "args": {
+                },
+                "priority": 200
+            },
+            {
+                "function": "powerline.segments.common.time.date",
+                "args": {
+                    "format": "%A %-d %B %H:%M:%S"
+                },
+                "priority": 100
+            },
+            {
+                "function": "powerline.segments.common.env.user",
+                "args": {
+                    "hide_user": "grh"
+                },
+                "priority": 30
+            },
+            {
+                "function": "powerline.segments.common.net.hostname",
+                "args": {
+                    "only_if_ssh":true
+                },
+                "priority": 10
+            },
+            {
+                "function": "powerline.segments.common.bat.battery",
+                "args": {
+                    "format": "{ac_state}{capacity:3.0%}",
+                    "gamify": false,
+                    "offline": "",
+                    "full_heart": ""
+                },
+                "priority": 30
+            },
+            {
+                "function": "powerline.segments.common.env.virtualenv",
+                "priority": 50
+            },
+            {
+                "function": "powerline.segments.shell.cwd",
+                "args": {
+                    "dir_limit_depth": 4,
+                    "use_path_separator": false,
+                    "shorten_home": false
+                },
+                "priority": 10
+            },
+            {
+                "_comment": "pip install powerline-gitstatus",
+                "_comment": "https://github.com/jaspernbrouwer/powerline-gitstatus",
+                "function": "powerline_gitstatus.gitstatus",
+                "args": {
+                    "show_tag": true
+                },
+                "priority": 40
+            },
+            {
+                "function": "powerline.segments.shell.jobnum",
+                "priority": 20
+            },
+            {
+                "function": "powerline.segments.shell.last_pipe_status",
+                "priority": 10
+            }
+        ]
+    }
+}
