@@ -1,0 +1,3 @@
+#export DEBEMAIL="moi@example.com"
+#export DEBFULLNAME="Moi Example"
+export EMAIL="moi@example.com"
