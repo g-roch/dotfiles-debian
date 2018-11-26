@@ -69,9 +69,21 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+set $modcontainer stacking (s); tabbed (w); split (e)
+mode "$modcontainer" {
+   bindsym s layout stacking, mode "default"
+   bindsym w layout tabbed, mode "default"
+   bindsym e layout toggle split, mode "default"
+
+   # back to normal: Enter or Escape
+   bindsym c mode "default"
+   bindsym $mod+c mode "default"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
+
+bindsym $mod+c mode "$modcontainer"
+
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -91,12 +103,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-bindsym $mod+Escape exec "i3lock"
-bindsym $mod+Shift+Escape exec "i3-msg exit"
-bindsym $mod+Delete exec "i3-nagbar -t warning -m 'poweroff' -b 'Yes, poweroff' 'systemctl poweroff'"
-bindsym $mod+Shift+Delete exec "i3-nagbar -t warning -m 'reboot' -b 'Yes, reboot' 'systemctl reboot'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -184,8 +191,11 @@ mode "$sys" {
 }
 bindsym $mod+s mode "$sys"
 
-set $proj projection mode : 
+set $proj projection mode : only internal (i); dual (2); triple (3); VGA-right [todo] (v); DP-right [todo] (d)
 mode "$proj" {
+   bindsym i exec --no-startup-id xrandr --output DP-2-1 --off --output DP-2-2 --off --output eDP-1 --auto --output VGA-1 --off --output HDMI-1 --off --output HDMI-2 --off --output DP-1 --off --output DP-2 --off --output DP-2-3 , mode "default"
+   bindsym 2 exec --no-startup-id xrandr --output DP-2-1 --auto --output DP-2-2 --auto --output DP-2-1 --right-of DP-2-2 --output eDP-1 --off --output VGA-1 --off --output HDMI-1 --off --output HDMI-2 --off --output DP-1 --off --output DP-2 --off --output DP-2-3 , mode "default"
+   bindsym 3 exec --no-startup-id xrandr --output DP-2-1 --auto --output DP-2-2 --auto --output DP-2-1 --right-of DP-2-2 --output eDP-1 --auto --output VGA-1 --off --output HDMI-1 --off --output HDMI-2 --off --output DP-1 --off --output DP-2 --off --output DP-2-3 , mode "default"
    # back to normal: Enter or Escape
    bindsym p mode "default"
    bindsym $mod+p mode "default"
