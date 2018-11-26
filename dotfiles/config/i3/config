@@ -202,6 +202,38 @@ mode "$proj" {
 }
 bindsym $mod+p mode "$proj"
 
+set $modMusique Musique : set volume 0% - 100% [§123-890]; [+/-] ; play/pause (p); back (b); next (n)
+mode "$modMusique" {
+   bindsym section     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%
+   bindsym 1           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 10%
+   bindsym 2           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 20%
+   bindsym 3           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 30%
+   bindsym 4           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 40%
+   bindsym 5           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 50%
+   bindsym 6           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 60%
+   bindsym 7           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 70%
+   bindsym 8           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 80%
+   bindsym 9           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 90%
+   bindsym 0           exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100%
+   bindsym minus       exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3%
+   bindsym KP_Subtract exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3%
+   bindsym Shift+1     exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3%
+   bindsym KP_Add      exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3%
+   bindsym p           exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+   bindsym b           exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+   bindsym n           exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+   # back to normal: Enter or Escape
+   bindsym m mode "default"
+   bindsym $mod+m mode "default"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
+bindsym $mod+m mode "$modMusique"
+bindsym XF86AudioMute         exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3%, mode "default"
+bindsym XF86AudioRaiseVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3%, mode "default"
+
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
