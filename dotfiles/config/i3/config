@@ -126,42 +126,18 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mode "workspace" {
-   # switch to workspace
-   bindsym 1 workspace 1, mode "default"
-   bindsym Shift+1 move container to workspace 1, mode "default"
-
-   bindsym 2 workspace 2, mode "default"
-   bindsym Shift+2 move container to workspace 2, mode "default"
-
-   bindsym 3 workspace 3, mode "default"
-   bindsym Shift+3 move container to workspace 3, mode "default"
-
-   bindsym 4 workspace 4, mode "default"
-   bindsym Shift+4 move container to workspace 4, mode "default"
-
-   bindsym 5 workspace 5, mode "default"
-   bindsym Shift+5 move container to workspace 5, mode "default"
-
-   bindsym 6 workspace 6, mode "default"
-   bindsym Shift+6 move container to workspace 6, mode "default"
-
-   bindsym 7 workspace 7, mode "default"
-   bindsym Shift+7 move container to workspace 7, mode "default"
-
-   bindsym 8 workspace 8, mode "default"
-   bindsym Shift+8 move container to workspace 8, mode "default"
-
-   bindsym 9 workspace 9, mode "default"
-   bindsym Shift+9 move container to workspace 9, mode "default"
-
-   bindsym 0 workspace 10, mode "default"
-   bindsym Shift+0 move container to workspace 10, mode "default"
-
-   bindsym m workspace "musique", mode "default"
-   bindsym Shift+m move container to workspace "musique", mode "default"
-
-   bindsym p workspace "projecteur", mode "default"
-   bindsym Shift+p move container to workspace "projecteur", mode "default"
+   bindsym 1 workspace "1"          , mode "default"
+   bindsym 2 workspace "2"          , mode "default"
+   bindsym 3 workspace "3"          , mode "default"
+   bindsym 4 workspace "4"          , mode "default"
+   bindsym 5 workspace "5"          , mode "default"
+   bindsym 6 workspace "6"          , mode "default"
+   bindsym 7 workspace "7"          , mode "default"
+   bindsym 8 workspace "8"          , mode "default"
+   bindsym 9 workspace "9"          , mode "default"
+   bindsym 0 workspace "10"         , mode "default"
+   bindsym m workspace "musique"    , mode "default"
+   bindsym p workspace "projecteur" , mode "default"
 
    # back to normal: Enter or Escape
    bindsym $mod+w mode "default"
@@ -169,7 +145,29 @@ mode "workspace" {
    bindsym Return mode "default"
    bindsym Escape mode "default"
 }
+mode "move to workspace" {
+   bindsym 1 move container to workspace "1"          , mode "default"
+   bindsym 2 move container to workspace "2"          , mode "default"
+   bindsym 3 move container to workspace "3"          , mode "default"
+   bindsym 4 move container to workspace "4"          , mode "default"
+   bindsym 5 move container to workspace "5"          , mode "default"
+   bindsym 6 move container to workspace "6"          , mode "default"
+   bindsym 7 move container to workspace "7"          , mode "default"
+   bindsym 8 move container to workspace "8"          , mode "default"
+   bindsym 9 move container to workspace "9"          , mode "default"
+   bindsym 0 move container to workspace "10"         , mode "default"
+   bindsym m move container to workspace "musique"    , mode "default"
+   bindsym p move container to workspace "projecteur" , mode "default"
+
+   # back to normal: Enter or Escape
+   bindsym $mod+w mode "default"
+   bindsym $mod+Shift+w mode "default"
+   bindsym w mode "default"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
 bindsym $mod+w mode "workspace"
+bindsym $mod+Shift+w mode "move to workspace"
 
 set $Locker i3lock
 set $sys sys lock (l); quit i3 (q); poweroff (o); reboot (r); suspend (s); hibernate (h)
