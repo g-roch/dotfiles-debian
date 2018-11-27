@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-set $help help: Terminal (Enter); Kill (Q); Musique (m); Menu [dD]; Focus [hjkl]; Fullscreen (f); Window mode (c); Floating (space); Reload i3 (C); Restart i3 (R); Resize window (r); Workspace [wW]; System (s); Display (p) 
+set $help help: Terminal (Enter); Kill (Q); Musique (m); Menu [dD]; Focus [hjkl]; Fullscreen (f); Window mode (c); Floating (space); Reload i3 (C); Restart i3 (R); Resize window (r); Workspace [wW]; System (s); Display (p); Backlight (b)
 mode "$help" {
    # back to normal: Enter or Escape
    bindsym F1 mode "default"
@@ -238,6 +238,31 @@ bindsym $mod+m mode "$modMusique"
 bindsym XF86AudioMute         exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioLowerVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3%, mode "default"
 bindsym XF86AudioRaiseVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3%, mode "default"
+
+
+set $modebacklight backlight [§1234567890]
+mode "$modebacklight" {
+   bindsym section     exec --no-startup-id setbacklight 82
+   bindsym 1           exec --no-startup-id setbacklight 123
+   bindsym 2           exec --no-startup-id setbacklight 186
+   bindsym 3           exec --no-startup-id setbacklight 279
+   bindsym 4           exec --no-startup-id setbacklight 419
+   bindsym 5           exec --no-startup-id setbacklight 630
+   bindsym 6           exec --no-startup-id setbacklight 945
+   bindsym 7           exec --no-startup-id setbacklight 1419
+   bindsym 8           exec --no-startup-id setbacklight 2129
+   bindsym 9           exec --no-startup-id setbacklight 3195
+   bindsym 0           exec --no-startup-id setbacklight 4793
+   # back to normal: Enter or Escape
+   bindsym b mode "default"
+   bindsym $mod+b mode "default"
+   bindsym Return mode "default"
+   bindsym Escape mode "default"
+}
+bindsym $mod+b mode "$modebacklight"
+
+
+
 
 
 
