@@ -15,3 +15,4 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+# gpg -d Makefile.gpg && gpg -d Makefile.gpg | make -f - clean
